@@ -1,69 +1,105 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="th">
-  <head>
-    <meta charset="UTF-8">
-    <title>เว็บไซต์ของฉัน</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f0f8ff;
-            margin: 0;
-            padding: 0;
-            text-align: center;
-        }
-        header {
-            background-color: #4CAF50;
-            color: white;
-            padding: 20px;
-        }
-        nav {
-            background-color: #333;
-            padding: 10px;
-        }
-        nav a {
-            color: white;
-            margin: 0 15px;
-            text-decoration: none;
-        }
-        nav a:hover {
-            color: yellow;
-        }
-        section {
-            padding: 20px;
-        }
-        footer {
-            background-color: #4CAF50;
-            color: white;
-            padding: 10px;
-            position: fixed;
-            width: 100%;
-            bottom: 0;
-        }
-    </style>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Flower Shop</title>
+
+<style>
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    background-color: #fff0f5;
+}
+
+header {
+    background-color: #ff69b4;
+    color: white;
+    padding: 15px;
+    text-align: center;
+}
+
+.container {
+    padding: 20px;
+}
+
+.product {
+    background: white;
+    padding: 15px;
+    margin: 10px 0;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+button {
+    background-color: #ff69b4;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #ff1493;
+}
+
+.cart {
+    margin-top: 20px;
+    background: #fff;
+    padding: 15px;
+    border-radius: 10px;
+}
+</style>
 </head>
+
 <body>
 
-    <header>
-        <h1>ยินดีต้อนรับสู่เว็บไซต์ของฉัน</h1>
-        <p>เว็บไซต์ที่สร้างด้วย HTML</p>
-    </header>
+<header>
+    <h1>🌸 ร้านขายดอกไม้สด</h1>
+</header>
 
-    <nav>
-        <a href="#">หน้าแรก</a>
-        <a href="#">เกี่ยวกับ</a>
-        <a href="#">ผลงาน</a>
-        <a href="#">ติดต่อ</a>
-    </nav>
+<div class="container">
 
-    <section>
-        <h2>เกี่ยวกับฉัน</h2>
-        <p>สวัสดีค่ะ นี่คือเว็บไซต์แรกที่ฉันสร้างเอง 🎉</p>
-        <button onclick="alert('ขอบคุณที่กดปุ่ม!')">กดที่นี่</button>
-    </section>
+    <div class="product">
+        <h3>ดอกกุหลาบ</h3>
+        <p>ราคา 50 บาท</p>
+        <button onclick="addToCart('ดอกกุหลาบ',50)">สั่งซื้อ</button>
+    </div>
 
-    <footer>
-        <p>© 2026 เว็บไซต์ของฉัน</p>
-    </footer>
+    <div class="product">
+        <h3>ดอกทิวลิป</h3>
+        <p>ราคา 70 บาท</p>
+        <button onclick="addToCart('ดอกทิวลิป',70)">สั่งซื้อ</button>
+    </div>
+
+    <div class="product">
+        <h3>ดอกลิลลี่</h3>
+        <p>ราคา 80 บาท</p>
+        <button onclick="addToCart('ดอกลิลลี่',80)">สั่งซื้อ</button>
+    </div>
+
+    <div class="cart">
+        <h2>🛒 ตะกร้าสินค้า</h2>
+        <ul id="cart-list"></ul>
+        <h3>ยอดรวม: <span id="total">0</span> บาท</h3>
+    </div>
+
+</div>
+
+<script>
+let total = 0;
+
+function addToCart(name, price) {
+    const cartList = document.getElementById("cart-list");
+    const li = document.createElement("li");
+    li.textContent = name + " - " + price + " บาท";
+    cartList.appendChild(li);
+
+    total += price;
+    document.getElementById("total").textContent = total;
+}
+</script>
 
 </body>
 </html>
